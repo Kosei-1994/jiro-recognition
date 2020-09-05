@@ -1,0 +1,21 @@
+{% extends 'ramen/base.html' %}
+{% block title %}ラーメン推定アプリメニュー{% endblock %}
+
+{% block content %}
+<div>
+    <h4 class="mt-4 mb-5 border-bottom"ラーメン推定アプリ></h4>
+    <p>推定ボタンクリック</p>
+    <form action="{% url 'ramen:predict' %}" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="custom-file">
+            {{ form.image }}
+            <label class="custom-file-label" for="customFile">
+                ファイルを選択してください。
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">推定する</button>
+    </form>
+</div>
+{% endblock %}
